@@ -1,9 +1,9 @@
-FROM golang:1.19-alpine
+FROM golang
 
 RUN apk --no-cache add ca-certificates
 
 # Set destination folder
-WORKDIR /app/
+WORKDIR /go/src/fusupo-backend/
 # Copy and Download Go modules of the project
 COPY go.mod .
 RUN go mod download
@@ -14,8 +14,18 @@ COPY . .
 # Build binary
 RUN CGO_ENABLED=0 GOOS=linux go build -o /pingeso-fusupo-backend-v2
 
+######## New stage #######
+FROM alpine:3.9  
+
+RUN apk --no-cache add ca-certificates
+
+WORKDIR /root/
+
+# Copy the folder with the binary file from the previous stage
+COPY --from=0 /go/src/fusupo-backend/ .
+
 # Port to be exposed
 EXPOSE 8000
 
 # Run the app
-CMD ["/pingeso-fusupo-backend-v2"]
+CMD ["./pingeso-fusupo-backend-v2"]
