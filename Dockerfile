@@ -10,7 +10,7 @@ RUN go mod download
 COPY . .
 
 # Build binary
-RUN CGO_ENABLED=0 GOOS=linux go build -o /pingeso-fusupo-backend-v2
+RUN CGO_ENABLED=0 GOOS=linux go build -o pingeso-fusupo-backend-v2
 
 ######## New stage #######
 FROM alpine:3.14  
