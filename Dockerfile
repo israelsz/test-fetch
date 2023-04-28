@@ -17,6 +17,7 @@ RUN CGO_ENABLED=0 GOOS=linux go build -o /pingeso-fusupo-backend-v2
 ######## New stage #######
 FROM alpine:3.14  
 
+RUN apk update
 RUN apk --no-cache add ca-certificates
 
 WORKDIR /root/
