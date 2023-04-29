@@ -1,0 +1,249 @@
+{
+	"info": {
+		"_postman_id": "0e5b651b-d379-412e-a024-d8786dbddd8f",
+		"name": "Fusupo",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "16889794"
+	},
+	"item": [
+		{
+			"name": "cargo",
+			"item": [
+				{
+					"name": "create",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"cargo 1\",\n    \"competencias\": [\n        {\n        \"_id\": \"644af7f40d79185fdf212482\",\n        \"name\": \"Competencia 1\",\n        \"descripcion\": \"descripcion 1\",\n        \"tipo\": 1,\n        \"created_at\": \"2023-04-27T22:32:20.097169756Z\",\n        \"updated_at\": \"2023-04-27T22:32:20.097169836Z\"\n        }\n    ]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{ADDRESS}}/cargo",
+							"host": [
+								"{{ADDRESS}}"
+							],
+							"path": [
+								"cargo"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "competencia",
+			"item": [
+				{
+					"name": "create",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Competencia 1\",\n    \"descripcion\": \"descripcion 1\",\n    \"tipo\": 1\n}"
+						},
+						"url": {
+							"raw": "{{ADDRESS}}/competencia",
+							"host": [
+								"{{ADDRESS}}"
+							],
+							"path": [
+								"competencia"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "evaluacion",
+			"item": [
+				{
+					"name": "create",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"tipo\": \"tipo 1\",\n    \"questions\": [\n        {\n            \"tipo\": \"tipo1\",\n            \"pregunta\": \"¿Pregunta 1?\",\n            \"respuestas\": \n                {\n                    \"puntaje\": 1,\n                    \"descripcion\": \"Respuesta 1\"\n                }\n        }\n    ]\n}\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{ADDRESS}}/evaluacion",
+							"host": [
+								"{{ADDRESS}}"
+							],
+							"path": [
+								"evaluacion"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "user",
+			"item": [
+				{
+					"name": "register",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"email\": \"fusupo@example.com\",\n  \"name\": \"fusupo\",\n  \"rol\": \"Admin\",\n  \"password\": \"Hola123\",\n  \"cargo\": {\n    \"_id\": \"644af8e60d79185fdf212488\",\n    \"name\": \"cargo 1\",\n    \"competencias\": [\n        {\n            \"_id\": \"644af7f40d79185fdf212482\",\n            \"name\": \"Competencia 1\",\n            \"descripcion\": \"descripcion 1\",\n            \"tipo\": 1,\n            \"created_at\": \"2023-04-27T22:32:20.097169756Z\",\n            \"updated_at\": \"2023-04-27T22:32:20.097169836Z\"\n        }\n    ],\n    \"created_at\": \"2023-04-27T22:36:22.117126484Z\",\n    \"updated_at\": \"2023-04-27T22:36:22.117126564Z\"\n    },\n    \"team\": [\"644af74e0d79185fdf21247e\", \"000000000000000000000000\"]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{ADDRESS}}/user",
+							"host": [
+								"{{ADDRESS}}"
+							],
+							"path": [
+								"user"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "login",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"email\": \"fusupo@example.com\",\n  \"password\": \"Hola123\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{ADDRESS}}/auth/login",
+							"host": [
+								"{{ADDRESS}}"
+							],
+							"path": [
+								"auth",
+								"login"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "respuestasEvaluacion",
+			"item": [
+				{
+					"name": "create",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"evaluacion\": \"Evaluación 1\",\n  \"periodo\": \"2023-Q1\",\n  \"user\": {\n      \"id\": \"644afb8506aabbff4025c503\",\n    \"email\": \"fusupo@example.com\",\n    \"name\": \"fusupo\",\n    \"rol\": \"Admin\",\n    \"password\": \"Hola123\"\n    },\n  \"preguntas\": [\n    {\n      \"pregunta\": \"Pregunta 1\",\n      \"respuesta\": \"Respuesta 1\"\n    },\n    {\n      \"pregunta\": \"Pregunta 2\",\n      \"respuesta\": \"Respuesta 2\"\n    }\n  ]\n}\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{ADDRESS}}/respuestasevaluacion",
+							"host": [
+								"{{ADDRESS}}"
+							],
+							"path": [
+								"respuestasevaluacion"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "ADDRESS",
+			"value": "http://144.22.44.98",
+			"type": "string"
+		},
+		{
+			"key": "TOKEN",
+			"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2ODMyMzk0MDMsIm9yaWdfaWF0IjoxNjgyNjM0NjAzLCJyb2wiOiJBZG1pbiIsInVzZXIiOnsiX2lkIjoiNjQ0YWY3NGUwZDc5MTg1ZmRmMjEyNDdlIiwiZW1haWwiOiJmdXN1cG9AZXhhbXBsZS5jb20iLCJuYW1lIjoiZnVzdXBvIiwicm9sIjoiQWRtaW4iLCJfaGFzaCI6IiIsImNhcmdvIjp7Il9pZCI6IjAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMCIsIm5hbWUiOiIiLCJjb21wZXRlbmNpYXMiOm51bGwsImNyZWF0ZWRfYXQiOiIwMDAxLTAxLTAxVDAwOjAwOjAwWiIsInVwZGF0ZWRfYXQiOiIwMDAxLTAxLTAxVDAwOjAwOjAwWiJ9LCJyZXNwdWVzdGFzIjpudWxsLCJjcmVhdGVkX2F0IjoiMDAwMS0wMS0wMVQwMDowMDowMFoiLCJ1cGRhdGVkX2F0IjoiMDAwMS0wMS0wMVQwMDowMDowMFoifX0.pPKkhviLndB1n6u9mWFXWenWVwayDlIXI48aF79yX6M",
+			"type": "string"
+		}
+	]
+}

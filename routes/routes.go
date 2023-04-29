@@ -12,4 +12,13 @@ func InitRoutes(r *gin.Engine) {
 	InitAuthRoutes(r)
 	//Registra las rutas del grupo de usuario del archivo usuarioRouter.go
 	InitUserRoutes(r)
+	//Registra las rutas del grupo de competencia del archivo competenciaRouter.go
+	InitCompetenciaRoutes(r)
+	//Registra las rutas del grupo de cargo del archivo cargoRouter.go
+	InitCargoRoutes(r)
+	//Registra las rutas del grupo de evaluacion del archivo evaluacionRouter.go
+	InitEvaluacionRoutes(r)
+	//Registra las rutas del grupo de respuestasEvaluacion del archivo respuestasEvaluacionRouter.go
+	InitRespuestasEvaluacionRoutes(r)
+
 }
