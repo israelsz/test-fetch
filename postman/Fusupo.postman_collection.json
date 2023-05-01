@@ -26,7 +26,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"name\": \"cargo 1\",\n    \"competencias\": [\n        {\n        \"_id\": \"644af7f40d79185fdf212482\",\n        \"name\": \"Competencia 1\",\n        \"descripcion\": \"descripcion 1\",\n        \"tipo\": 1,\n        \"created_at\": \"2023-04-27T22:32:20.097169756Z\",\n        \"updated_at\": \"2023-04-27T22:32:20.097169836Z\"\n        }\n    ]\n}",
+							"raw": "{\n    \"name\": \"cargo 1\",\n    \"competencias\": [\n        {\n        \"_id\": \"644af7f40d79185fdf212482\"\n        }\n    ]\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -93,7 +93,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"tipo\": \"tipo 1\",\n    \"questions\": [\n        {\n            \"tipo\": \"tipo1\",\n            \"pregunta\": \"¿Pregunta 1?\",\n            \"respuestas\": \n                {\n                    \"puntaje\": 1,\n                    \"descripcion\": \"Respuesta 1\"\n                }\n        }\n    ]\n}\n",
+							"raw": "{\n    \"idCompetencia\": \"64502ce73ce663a21ae96576\",\n    \"tipo\": \"tipo 1\",\n    \"questions\": [\n        {\n            \"tipo\": \"tipo1\",\n            \"pregunta\": \"¿Pregunta 1?\",\n            \"respuestas\": [\n                {\n                    \"puntaje\": 1,\n                    \"descripcion\": \"Respuesta 1\"\n                },\n                {\n                    \"puntaje\": 2,\n                    \"descripcion\": \"2\"\n                },\n                {\n                    \"puntaje\": 3,\n                    \"descripcion\": \"3\"\n                },\n                {\n                    \"puntaje\": 4,\n                    \"descripcion\": \"4\"\n                }\n            ]\n        },\n        {\n            \"tipo\": \"texto\",\n            \"pregunta\": \"JUSTIFICACIÓN DEL PUNTAJE ASIGNADO\",\n            \"respuestas\": [\n                {\n                    \"puntaje\": 0,\n                    \"descripcion\": \"\"\n                }\n            ]\n        }\n    ]\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -124,7 +124,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n  \"email\": \"fusupo@example.com\",\n  \"name\": \"fusupo\",\n  \"rol\": \"Admin\",\n  \"password\": \"Hola123\",\n  \"cargo\": {\n    \"_id\": \"644af8e60d79185fdf212488\",\n    \"name\": \"cargo 1\",\n    \"competencias\": [\n        {\n            \"_id\": \"644af7f40d79185fdf212482\",\n            \"name\": \"Competencia 1\",\n            \"descripcion\": \"descripcion 1\",\n            \"tipo\": 1,\n            \"created_at\": \"2023-04-27T22:32:20.097169756Z\",\n            \"updated_at\": \"2023-04-27T22:32:20.097169836Z\"\n        }\n    ],\n    \"created_at\": \"2023-04-27T22:36:22.117126484Z\",\n    \"updated_at\": \"2023-04-27T22:36:22.117126564Z\"\n    },\n    \"team\": [\"644af74e0d79185fdf21247e\", \"000000000000000000000000\"]\n}",
+							"raw": "{\n  \"email\": \"fusupo@example.com\",\n  \"name\": \"fusupo\",\n  \"rol\": \"Admin\",\n  \"password\": \"Hola123\",\n  \"cargo\": \"644af74e0d79185fdf21247e\",\n  \"team\": \"644af74e0d79185fdf21247e\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -192,7 +192,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n  \"evaluacion\": \"Evaluación 1\",\n  \"periodo\": \"2023-Q1\",\n  \"user\": {\n      \"id\": \"644afb8506aabbff4025c503\",\n    \"email\": \"fusupo@example.com\",\n    \"name\": \"fusupo\",\n    \"rol\": \"Admin\",\n    \"password\": \"Hola123\"\n    },\n  \"preguntas\": [\n    {\n      \"pregunta\": \"Pregunta 1\",\n      \"respuesta\": \"Respuesta 1\"\n    },\n    {\n      \"pregunta\": \"Pregunta 2\",\n      \"respuesta\": \"Respuesta 2\"\n    }\n  ]\n}\n",
+							"raw": "{\n    \"tipoEvaluacion\": \"autoeval\",\n    \"periodo\": \"2023-1\",\n    \"idEvaluador\": \"644afe4a16fb2e054e45eec1\",\n    \"idEvaluado\": \"644afe4a16fb2e054e45eec3\",\n    \"retroalimentacion\": 1,\n    \"questionsAnswers\": [\n        {\n            \"competencia\": \"competencia\",\n            \"respuesta\": \"respuesta\",\n            \"puntaje\": 1,\n            \"justificacion\": \"lo hizo bien\"\n        }\n    ],\n    \"evaluacion\": {\n        \"_id\": \"000000000000000000000000\",\n        \"tipo\": \"\",\n        \"created_at\": \"0001-01-01T00:00:00Z\",\n        \"updated_at\": \"0001-01-01T00:00:00Z\",\n        \"idCompetencia\": \"000000000000000000000000\",\n        \"questions\": [\n            {\n                \"tipo\": \"unique\",\n                \"pregunta\": \"IMPACTO E INFLUENCIA...\",\n                \"respuestas\": [\n                    {\n                        \"puntaje\": 1,\n                        \"descripcion\": \"1\"\n                    },\n                    {\n                        \"puntaje\": 2,\n                        \"descripcion\": \"2\"\n                    },\n                    {\n                        \"puntaje\": 3,\n                        \"descripcion\": \"3\"\n                    },\n                    {\n                        \"puntaje\": 4,\n                        \"descripcion\": \"4\"\n                    }\n                ]\n            },\n            {\n                \"tipo\": \"texto\",\n                \"pregunta\": \"JUSTIFICACIÓN DEL PUNTAJE ASIGNADO\",\n                \"respuestas\": [\n                    {\n                        \"puntaje\": 0,\n                        \"descripcion\": \"\"\n                    }\n                ]\n            }\n        ]\n    }\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -210,6 +210,67 @@
 						}
 					},
 					"response": []
+				}
+			]
+		},
+		{
+			"name": "Equipo",
+			"item": [
+				{
+					"name": "create",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"name\": \"Equipo rocket\",\n  \"idEvaluador\": \"644c88af886f386a73f938fb\",\n  \"cargos\": [\"644c88af886f386a73f938fb\", \"644c88af886f386a73f938fb\"]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{ADDRESS}}/equipo",
+							"host": [
+								"{{ADDRESS}}"
+							],
+							"path": [
+								"equipo"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"auth": {
+				"type": "bearer",
+				"bearer": [
+					{
+						"key": "token",
+						"value": "{{TOKEN}}",
+						"type": "string"
+					}
+				]
+			},
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
 				}
 			]
 		}

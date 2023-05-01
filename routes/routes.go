@@ -20,5 +20,7 @@ func InitRoutes(r *gin.Engine) {
 	InitEvaluacionRoutes(r)
 	//Registra las rutas del grupo de respuestasEvaluacion del archivo respuestasEvaluacionRouter.go
 	InitRespuestasEvaluacionRoutes(r)
+	//Registra las rutas del grupo de equipo del archivo equipoRouter.go
+	InitEquipoRoutes(r)
 
 }
