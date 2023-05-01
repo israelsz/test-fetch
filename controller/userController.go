@@ -3,6 +3,7 @@ package controller
 import (
 	"log"
 	"net/http"
+	"rest-template/middleware"
 	"rest-template/models"
 	"rest-template/services"
 
@@ -46,7 +47,7 @@ func GetUserByID(ctx *gin.Context) {
 	ctx.JSON(http.StatusCreated, resultUser)
 }
 
-// Función para obtener un usuario por id
+// Función para obtener un usuario por email
 func GetUserByEmail(ctx *gin.Context) {
 	userEmail := ctx.Param("email")
 	resultUser, err := services.GetUserByEmailService(userEmail)
@@ -106,4 +107,16 @@ func DeleteUser(ctx *gin.Context) {
 	log.Println("Se elimino el usuario")
 	// Devuelve el usuario encontrado.
 	ctx.JSON(http.StatusOK, "Usuario eliminado")
+}
+
+// Función para conseguir la información del usuario que se encuentra loggeado actualmente
+func GetCurrentUser(ctx *gin.Context) {
+	currentUser := middleware.IdentityHandlerFunc(ctx).(map[string]interface{})
+	userID := currentUser["_id"].(string)
+	resultUser, err := services.GetUserByIDService(userID)
+	if err != nil {
+		ctx.JSON(http.StatusBadRequest, gin.H{"error": "Error al obtener el usuario"})
+		return
+	}
+	ctx.JSON(http.StatusOK, resultUser)
 }
