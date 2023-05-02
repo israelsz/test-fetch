@@ -26,7 +26,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"name\": \"cargo 1\",\n    \"competencias\": [\n        {\n        \"_id\": \"644af7f40d79185fdf212482\"\n        }\n    ]\n}",
+							"raw": "{\n    \"name\": \"cargo 1\",\n    \"competencias\": [\"644af7f40d79185fdf212482\", \"644af7f40d79185fdf212489\"]\n}",
 							"options": {
 								"raw": {
 									"language": "json"
