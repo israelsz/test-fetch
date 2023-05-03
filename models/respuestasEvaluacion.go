@@ -21,5 +21,5 @@ type RespuestasEvaluacion struct {
 		Puntaje       int    `json:"puntaje" bson:"puntaje,omitempty"`
 		Justificacion string `json:"justificacion" bson:"justificacion,omitempty"`
 	} `json:"questionsAnswers" bson:"questionsAnswers,omitempty"`
-	Evaluacion Evaluacion `json:"evaluacion" bson:"evaluacion,omitempty"`
+	Evaluacion FormularioCompetencia `json:"evaluacion" bson:"evaluacion,omitempty"`
 }

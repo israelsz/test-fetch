@@ -16,8 +16,8 @@ func InitRoutes(r *gin.Engine) {
 	InitCompetenciaRoutes(r)
 	//Registra las rutas del grupo de cargo del archivo cargoRouter.go
 	InitCargoRoutes(r)
-	//Registra las rutas del grupo de evaluacion del archivo evaluacionRouter.go
-	InitEvaluacionRoutes(r)
+	//Registra las rutas del grupo de formulariocompetencia del archivo formulariocompetenciaRouter.go
+	InitFormularioCompetenciaRoutes(r)
 	//Registra las rutas del grupo de respuestasEvaluacion del archivo respuestasEvaluacionRouter.go
 	InitRespuestasEvaluacionRoutes(r)
 	//Registra las rutas del grupo de equipo del archivo equipoRouter.go
