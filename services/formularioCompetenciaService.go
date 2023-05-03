@@ -1,11 +1,14 @@
 package services
 
 import (
+	"log"
 	"rest-template/config"
 	"rest-template/models"
 	"time"
 
+	"go.mongodb.org/mongo-driver/bson"
 	"go.mongodb.org/mongo-driver/bson/primitive"
+	"go.mongodb.org/mongo-driver/mongo"
 )
 
 /*
@@ -24,7 +27,7 @@ func CreateFormularioCompetenciaService(newFormularioCompetencia models.Formular
 	// Obtiene la colección de formulariocompetencias.
 	collection := dbConnection.GetCollection(CollectionNameFormularioCompetencia)
 
-	// Genera un nuevo ID único para el formulariocompetencia.
+	// Genera un nuevo ID único para el formulario competencia.
 	newFormularioCompetencia.ID = primitive.NewObjectID()
 	// Establece la fecha de creación y actualización del formulariocompetencia.
 	newFormularioCompetencia.CreatedAt = time.Now()
@@ -38,4 +41,39 @@ func CreateFormularioCompetenciaService(newFormularioCompetencia models.Formular
 	}
 
 	return newFormularioCompetencia, err
+}
+
+// Función para conseguir el formulario de una competencia, buscando por id de competencia
+func GetFormularioCompetenciaByCompetenciaIDService(idCompetencia primitive.ObjectID) (models.FormularioCompetencia, error) {
+	// Crea una nueva instancia a la conexión de base de datos
+	dbConnection := config.NewDbConnection()
+	// Define un defer para cerrar la conexión a la base de datos al finalizar la función.
+	defer dbConnection.Close()
+	// Crea un objeto ID de MongoDB a partir del ID del formularioCompetencia.
+	var formularioCompetencia models.FormularioCompetencia
+	/*
+		oid, err := primitive.ObjectIDFromHex(idCompetencia)
+		if err != nil {
+			log.Println("No fue posible convertir el ID")
+			return formularioCompetencia, err
+		}
+	*/
+	// Crea un filtro para buscar el formularioCompetencia por su ID.
+	filter := bson.M{"idCompetencia": idCompetencia}
+
+	// Obtiene la colección de formularioCompetencias.
+	collection := dbConnection.GetCollection(CollectionNameFormularioCompetencia)
+	err := collection.FindOne(dbConnection.Context, filter).Decode(&formularioCompetencia)
+	if err != nil {
+		if err == mongo.ErrNoDocuments {
+			// No se encontró ningún documento con el ID especificado.
+			log.Println("formularioCompetencia no encontrado")
+			return formularioCompetencia, err
+		}
+		// Ocurrió un error durante la búsqueda.
+		return formularioCompetencia, err
+	}
+	log.Println("Se encontró el formularioCompetencia")
+	// Devuelve el formularioCompetencia encontrado.
+	return formularioCompetencia, nil
 }

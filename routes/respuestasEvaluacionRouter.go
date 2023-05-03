@@ -15,6 +15,7 @@ func InitRespuestasEvaluacionRoutes(r *gin.Engine) {
 	{
 		//Solo un usuario logueado sin importar su rol, puede crear un respuestasevaluacion
 		respuestasevaluacionGroup.POST("/", middleware.LoadJWTAuth().MiddlewareFunc(), controller.CreateRespuestasEvaluacion)
-
+		// Solo un usuario logueado puede conseguir un formulario de evaluacion
+		respuestasevaluacionGroup.GET("/:id", middleware.LoadJWTAuth().MiddlewareFunc(), controller.GetFormularioEvaluacion)
 	}
 }

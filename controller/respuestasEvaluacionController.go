@@ -29,3 +29,18 @@ func CreateRespuestasEvaluacion(ctx *gin.Context) {
 	ctx.JSON(http.StatusCreated, createdRespuestasEvaluacion)
 
 }
+
+// Servicio que permite recuperar un formulario para una competencia especifica
+func GetFormularioEvaluacion(ctx *gin.Context) {
+	// Se lee el id del cargo por el contexto ingresado en la ruta
+	cargoID := ctx.Param("id")
+	// Se crea el formulario a partir del cargo
+	formularioEvaluacion, err := services.CreateQuestionsAnswersService(cargoID)
+	// Si ocurrio un error
+	if err != nil {
+		ctx.JSON(http.StatusBadRequest, gin.H{"error": "Error al crear el formulario"})
+		return
+	}
+	// Devuelve el formulario creado.
+	ctx.JSON(http.StatusOK, formularioEvaluacion)
+}
