@@ -74,7 +74,7 @@
 			]
 		},
 		{
-			"name": "evaluacion",
+			"name": "FormularioCompetencia",
 			"item": [
 				{
 					"name": "create",
@@ -93,7 +93,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"idCompetencia\": \"64502ce73ce663a21ae96576\",\n    \"tipo\": \"tipo 1\",\n    \"questions\": [\n        {\n            \"tipo\": \"tipo1\",\n            \"pregunta\": \"¿Pregunta 1?\",\n            \"respuestas\": [\n                {\n                    \"puntaje\": 1,\n                    \"descripcion\": \"Respuesta 1\"\n                },\n                {\n                    \"puntaje\": 2,\n                    \"descripcion\": \"2\"\n                },\n                {\n                    \"puntaje\": 3,\n                    \"descripcion\": \"3\"\n                },\n                {\n                    \"puntaje\": 4,\n                    \"descripcion\": \"4\"\n                }\n            ]\n        },\n        {\n            \"tipo\": \"texto\",\n            \"pregunta\": \"JUSTIFICACIÓN DEL PUNTAJE ASIGNADO\",\n            \"respuestas\": [\n                {\n                    \"puntaje\": 0,\n                    \"descripcion\": \"\"\n                }\n            ]\n        }\n    ]\n}",
+							"raw": "{\n    \"idCompetencia\": \"6451b3081e06ab562df26735\",\n    \"questions\": [\n        {\n            \"tipo\": \"unique\", \n            \"pregunta\": \"COMPROMISO XD: Se identifica con la misión institucional y muestra disposición y proactividad para realizar acciones en favor de su concreción.\",\n            \"respuestas\": [\n                {\n                    \"puntaje\": 1,\n                    \"descripcion\": \"1\"\n                },\n                {\n                    \"puntaje\": 2,\n                    \"descripcion\": \"2\"\n                },\n                {\n                    \"puntaje\": 3,\n                    \"descripcion\": \"3\"\n                },\n                {\n                    \"puntaje\": 4,\n                    \"descripcion\": \"4\"\n                }\n            ]\n        },\n        {\n            \"tipo\": \"texto\", \n            \"pregunta\": \"JUSTIFICACIÓN DEL PUNTAJE ASIGNADO\",\n            \"respuestas\": [\n                {\n                    \"puntaje\": 1,\n                    \"descripcion\": \" \"\n                }\n            ]\n        }\n    ]\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -101,12 +101,13 @@
 							}
 						},
 						"url": {
-							"raw": "{{ADDRESS}}/evaluacion",
+							"raw": "{{ADDRESS}}/formulariocompetencia/",
 							"host": [
 								"{{ADDRESS}}"
 							],
 							"path": [
-								"evaluacion"
+								"formulariocompetencia",
+								""
 							]
 						}
 					},
@@ -241,6 +242,23 @@
 						}
 					},
 					"response": []
+				},
+				{
+					"name": "equipo propuesta pais",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{ADDRESS}}/equipo",
+							"host": [
+								"{{ADDRESS}}"
+							],
+							"path": [
+								"equipo"
+							]
+						}
+					},
+					"response": []
 				}
 			],
 			"auth": {
@@ -275,6 +293,16 @@
 			]
 		}
 	],
+	"auth": {
+		"type": "bearer",
+		"bearer": [
+			{
+				"key": "token",
+				"value": "{{TOKEN}}",
+				"type": "string"
+			}
+		]
+	},
 	"event": [
 		{
 			"listen": "prerequest",
@@ -298,12 +326,12 @@
 	"variable": [
 		{
 			"key": "ADDRESS",
-			"value": "http://144.22.44.98",
+			"value": "http://localhost:8000",
 			"type": "string"
 		},
 		{
 			"key": "TOKEN",
-			"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2ODMyMzk0MDMsIm9yaWdfaWF0IjoxNjgyNjM0NjAzLCJyb2wiOiJBZG1pbiIsInVzZXIiOnsiX2lkIjoiNjQ0YWY3NGUwZDc5MTg1ZmRmMjEyNDdlIiwiZW1haWwiOiJmdXN1cG9AZXhhbXBsZS5jb20iLCJuYW1lIjoiZnVzdXBvIiwicm9sIjoiQWRtaW4iLCJfaGFzaCI6IiIsImNhcmdvIjp7Il9pZCI6IjAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMCIsIm5hbWUiOiIiLCJjb21wZXRlbmNpYXMiOm51bGwsImNyZWF0ZWRfYXQiOiIwMDAxLTAxLTAxVDAwOjAwOjAwWiIsInVwZGF0ZWRfYXQiOiIwMDAxLTAxLTAxVDAwOjAwOjAwWiJ9LCJyZXNwdWVzdGFzIjpudWxsLCJjcmVhdGVkX2F0IjoiMDAwMS0wMS0wMVQwMDowMDowMFoiLCJ1cGRhdGVkX2F0IjoiMDAwMS0wMS0wMVQwMDowMDowMFoifX0.pPKkhviLndB1n6u9mWFXWenWVwayDlIXI48aF79yX6M",
+			"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2ODM1ODU3NjUsIm9yaWdfaWF0IjoxNjgyOTgwOTY1LCJyb2wiOiJBZG1pbiIsInVzZXIiOnsiX2lkIjoiNjQ1MDNlZTcwNTBiMWRhYzFiZWIxMzNlIiwiZW1haWwiOiJmdXN1cG9AZXhhbXBsZS5jb20iLCJuYW1lIjoiZnVzdXBvIiwicm9sIjoiQWRtaW4iLCJfaGFzaCI6IiIsImNhcmdvIjoiMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwIiwidGVhbSI6IjAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMCIsImNyZWF0ZWRfYXQiOiIwMDAxLTAxLTAxVDAwOjAwOjAwWiIsInVwZGF0ZWRfYXQiOiIwMDAxLTAxLTAxVDAwOjAwOjAwWiJ9fQ.PY74vLqXC0KZtq7Kpn3cH-zGIWWm8qHHij558wnBeUA",
 			"type": "string"
 		}
 	]
