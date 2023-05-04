@@ -8,9 +8,14 @@ import (
 
 // Objeto que se enviara al front-end. Representa a un formulario para un cargo en especificco
 type ResponseForm struct {
-	QuestionsAnswers []QuestionsAnswers `json:"questionsAnswers" bson:"questionsAnswers,omitempty"`
-	IdsFormularios   []string           `json:"idsFormularios" bson:"idsFormularios,omitempty"`
-	TipoCompetencia  []string           `json:"tipoCompetencia" bson:"tipoCompetencia,omitempty"`
+	IdEvaluador       primitive.ObjectID `json:"idEvaluador" bson:"idEvaluador,omitempty"`
+	IdEvaluado        primitive.ObjectID `json:"idEvaluado" bson:"idEvaluado,omitempty"`
+	TipoEvaluacion    string             `json:"tipoEvaluacion" bson:"tipoEvaluacion,omitempty"`
+	Periodo           string             `json:"periodo" bson:"periodo,omitempty"`
+	Retroalimentacion int                `json:"retroalimentacion" bson:"retroalimentacion,omitempty"`
+	QuestionsAnswers  []QuestionsAnswers `json:"questionsAnswers" bson:"questionsAnswers,omitempty"`
+	IdsFormularios    []string           `json:"idsFormularios" bson:"idsFormularios,omitempty"`
+	TipoCompetencia   []string           `json:"tipoCompetencia" bson:"tipoCompetencia,omitempty"`
 }
 
 type QuestionsAnswers struct {

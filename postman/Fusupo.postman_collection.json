@@ -57,7 +57,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"name\": \"Competencia 1\",\n    \"descripcion\": \"descripcion 1\",\n    \"tipo\": 1\n}"
+							"raw": "{\n    \"name\": \"Oportunidades de Mejora\",\n    \"descripcion\": \"Indique sugerencias para administrar las oportunidades de mejora del trabajador(a)\",\n    \"tipo\": 3\n}"
 						},
 						"url": {
 							"raw": "{{ADDRESS}}/competencia",
@@ -93,7 +93,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"idCompetencia\": \"6451b3081e06ab562df26735\",\n    \"questions\": [\n        {\n            \"tipo\": \"unique\", \n            \"pregunta\": \"COMPROMISO XD: Se identifica con la misión institucional y muestra disposición y proactividad para realizar acciones en favor de su concreción.\",\n            \"respuestas\": [\n                {\n                    \"puntaje\": 1,\n                    \"descripcion\": \"1\"\n                },\n                {\n                    \"puntaje\": 2,\n                    \"descripcion\": \"2\"\n                },\n                {\n                    \"puntaje\": 3,\n                    \"descripcion\": \"3\"\n                },\n                {\n                    \"puntaje\": 4,\n                    \"descripcion\": \"4\"\n                }\n            ]\n        },\n        {\n            \"tipo\": \"texto\", \n            \"pregunta\": \"JUSTIFICACIÓN DEL PUNTAJE ASIGNADO\",\n            \"respuestas\": [\n                {\n                    \"puntaje\": 1,\n                    \"descripcion\": \" \"\n                }\n            ]\n        }\n    ]\n}",
+							"raw": "{\n    \"idCompetencia\": \"64530f07488545281b836e46\",\n    \"questions\": [\n        {\n            \"tipo\": \"texto\", \n            \"pregunta\": \"Oportunidades de Mejora: Indique sugerencias para administrar las oportunidades de mejora del trabajador(a).\",\n            \"respuestas\": [\n                {\n                    \"puntaje\": 1,\n                    \"descripcion\": \"1\"\n                }\n            ]\n        }\n    ]   \n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -108,6 +108,36 @@
 							"path": [
 								"formulariocompetencia",
 								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "formularia competencias",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{ADDRESS}}/respuestasevaluacion/6451b4651e06ab562df26737",
+							"host": [
+								"{{ADDRESS}}"
+							],
+							"path": [
+								"respuestasevaluacion",
+								"6451b4651e06ab562df26737"
 							]
 						}
 					},
@@ -193,7 +223,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"tipoEvaluacion\": \"autoeval\",\n    \"periodo\": \"2023-1\",\n    \"idEvaluador\": \"644afe4a16fb2e054e45eec1\",\n    \"idEvaluado\": \"644afe4a16fb2e054e45eec3\",\n    \"retroalimentacion\": 1,\n    \"questionsAnswers\": [\n        {\n            \"competencia\": \"competencia\",\n            \"respuesta\": \"respuesta\",\n            \"puntaje\": 1,\n            \"justificacion\": \"lo hizo bien\"\n        }\n    ],\n    \"evaluacion\": {\n        \"_id\": \"000000000000000000000000\",\n        \"tipo\": \"\",\n        \"created_at\": \"0001-01-01T00:00:00Z\",\n        \"updated_at\": \"0001-01-01T00:00:00Z\",\n        \"idCompetencia\": \"000000000000000000000000\",\n        \"questions\": [\n            {\n                \"tipo\": \"unique\",\n                \"pregunta\": \"IMPACTO E INFLUENCIA...\",\n                \"respuestas\": [\n                    {\n                        \"puntaje\": 1,\n                        \"descripcion\": \"1\"\n                    },\n                    {\n                        \"puntaje\": 2,\n                        \"descripcion\": \"2\"\n                    },\n                    {\n                        \"puntaje\": 3,\n                        \"descripcion\": \"3\"\n                    },\n                    {\n                        \"puntaje\": 4,\n                        \"descripcion\": \"4\"\n                    }\n                ]\n            },\n            {\n                \"tipo\": \"texto\",\n                \"pregunta\": \"JUSTIFICACIÓN DEL PUNTAJE ASIGNADO\",\n                \"respuestas\": [\n                    {\n                        \"puntaje\": 0,\n                        \"descripcion\": \"\"\n                    }\n                ]\n            }\n        ]\n    }\n}",
+							"raw": "{\n    \"idEvaluado\": \"\",\n    \"idEvaluador\": \"\",\n    \"tipoEvaluacion\": \"\",\n    \"periodo\": \"\",\n    \"retroalimentacion\": 1,\n    \"questionsAnswers\": [\n        {\n            \"competencia\": \"IMPACTO E INFLUENCIA: Moviliza y convence a otros/as, por medio de argumentos sólidos y/o inspiradores, en adherir a iniciativas que permitan el alcance de las metas institucionales, logrando concretar ideas o mejoras a través de  la cooperación y confianza que desarrolla.\",\n            \"puntaje\": -1,\n            \"justificacion\": \"-1\",\n            \"opcionesPregunta\": [\n                {\n                    \"puntaje\": 1,\n                    \"descripcion\": \"1\"\n                },\n                {\n                    \"puntaje\": 2,\n                    \"descripcion\": \"2\"\n                },\n                {\n                    \"puntaje\": 3,\n                    \"descripcion\": \"3\"\n                },\n                {\n                    \"puntaje\": 4,\n                    \"descripcion\": \"4\"\n                }\n            ]\n        },\n        {\n            \"competencia\": \"LIDERAZGO: Dirige al grupo de forma motivadora, promoviendo la participación, el respeto y la cordialidad, en función de conseguir los resultados esperados.\",\n            \"puntaje\": -1,\n            \"justificacion\": \"-1\",\n            \"opcionesPregunta\": [\n                {\n                    \"puntaje\": 1,\n                    \"descripcion\": \"1\"\n                },\n                {\n                    \"puntaje\": 2,\n                    \"descripcion\": \"2\"\n                },\n                {\n                    \"puntaje\": 3,\n                    \"descripcion\": \"3\"\n                },\n                {\n                    \"puntaje\": 4,\n                    \"descripcion\": \"4\"\n                }\n            ]\n        },\n        {\n            \"competencia\": \"ASESORÍA: Transmite conocimientos técnicos y experiencias, haciéndolos comprensibles y ejecutables para los demás. Implica apoyar la toma de decisiones, siendo un referente técnico en aquellas materias de su competencia.\",\n            \"puntaje\": -1,\n            \"justificacion\": \"-1\",\n            \"opcionesPregunta\": [\n                {\n                    \"puntaje\": 1,\n                    \"descripcion\": \"1\"\n                },\n                {\n                    \"puntaje\": 2,\n                    \"descripcion\": \"2\"\n                },\n                {\n                    \"puntaje\": 3,\n                    \"descripcion\": \"3\"\n                },\n                {\n                    \"puntaje\": 4,\n                    \"descripcion\": \"4\"\n                }\n            ]\n        },\n        {\n            \"competencia\": \"TRABAJO EN EQUIPO: Fomenta relaciones de colaboración y un clima armónico de trabajo en el cumplimiento de un objetivo común, integrando sus cualidades, intereses y opiniones con las de los demás.\",\n            \"puntaje\": -1,\n            \"justificacion\": \"-1\",\n            \"opcionesPregunta\": [\n                {\n                    \"puntaje\": 1,\n                    \"descripcion\": \"1\"\n                },\n                {\n                    \"puntaje\": 2,\n                    \"descripcion\": \"2\"\n                },\n                {\n                    \"puntaje\": 3,\n                    \"descripcion\": \"3\"\n                },\n                {\n                    \"puntaje\": 4,\n                    \"descripcion\": \"4\"\n                }\n            ]\n        },\n        {\n            \"competencia\": \"COMUNICACIÓN EFECTIVA: Se comunica promoviendo el diálogo, transmitiendo sus ideas con claridad y precisión, en forma verbal y escrita, verificando la comprensión de sus mensajes y utilizando un lenguaje que se ajuste a sus interlocutores/as.\",\n            \"puntaje\": -1,\n            \"justificacion\": \"-1\",\n            \"opcionesPregunta\": [\n                {\n                    \"puntaje\": 1,\n                    \"descripcion\": \"1\"\n                },\n                {\n                    \"puntaje\": 2,\n                    \"descripcion\": \"2\"\n                },\n                {\n                    \"puntaje\": 3,\n                    \"descripcion\": \"3\"\n                },\n                {\n                    \"puntaje\": 4,\n                    \"descripcion\": \"4\"\n                }\n            ]\n        },\n        {\n            \"competencia\": \"COMPROMISO ORGANIZACIONAL: Se identifica con la misión institucional y muestra disposición y proactividad para realizar acciones en favor de su concreción.\",\n            \"puntaje\": -1,\n            \"justificacion\": \"-1\",\n            \"opcionesPregunta\": [\n                {\n                    \"puntaje\": 1,\n                    \"descripcion\": \"1\"\n                },\n                {\n                    \"puntaje\": 2,\n                    \"descripcion\": \"2\"\n                },\n                {\n                    \"puntaje\": 3,\n                    \"descripcion\": \"3\"\n                },\n                {\n                    \"puntaje\": 4,\n                    \"descripcion\": \"4\"\n                }\n            ]\n        },\n        {\n            \"competencia\": \"Oportunidades de Mejora: Indique sugerencias para administrar las oportunidades de mejora del trabajador(a).\",\n            \"puntaje\": -1,\n            \"justificacion\": \"-1\",\n            \"opcionesPregunta\": [\n                {\n                    \"puntaje\": 1,\n                    \"descripcion\": \"1\"\n                }\n            ]\n        }\n    ],\n    \"idsFormularios\": [\n        \"6451d8e9856a8ee20e6acbf2\",\n        \"6451d8f4856a8ee20e6acbf4\",\n        \"6451d900856a8ee20e6acbf6\",\n        \"6451d932856a8ee20e6acbfe\",\n        \"6451d93e856a8ee20e6acc00\",\n        \"6451d94a856a8ee20e6acc02\",\n        \"6453147064c689ca6cf01a60\"\n    ]\n}",
 							"options": {
 								"raw": {
 									"language": "json"

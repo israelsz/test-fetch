@@ -77,3 +77,38 @@ func GetFormularioCompetenciaByCompetenciaIDService(idCompetencia primitive.Obje
 	// Devuelve el formularioCompetencia encontrado.
 	return formularioCompetencia, nil
 }
+
+// Función para conseguir el formulario de una competencia, buscando por id de competencia
+func GetFormularioCompetenciaByIDService(oid primitive.ObjectID) (models.FormularioCompetencia, error) {
+	// Crea una nueva instancia a la conexión de base de datos
+	dbConnection := config.NewDbConnection()
+	// Define un defer para cerrar la conexión a la base de datos al finalizar la función.
+	defer dbConnection.Close()
+	// Crea un objeto ID de MongoDB a partir del ID del formularioCompetencia.
+	var formularioCompetencia models.FormularioCompetencia
+	/*
+		oid, err := primitive.ObjectIDFromHex(idCompetencia)
+		if err != nil {
+			log.Println("No fue posible convertir el ID")
+			return formularioCompetencia, err
+		}
+	*/
+	// Crea un filtro para buscar el formularioCompetencia por su ID.
+	filter := bson.M{"_id": oid}
+
+	// Obtiene la colección de formularioCompetencias.
+	collection := dbConnection.GetCollection(CollectionNameFormularioCompetencia)
+	err := collection.FindOne(dbConnection.Context, filter).Decode(&formularioCompetencia)
+	if err != nil {
+		if err == mongo.ErrNoDocuments {
+			// No se encontró ningún documento con el ID especificado.
+			log.Println("formularioCompetencia no encontrado")
+			return formularioCompetencia, err
+		}
+		// Ocurrió un error durante la búsqueda.
+		return formularioCompetencia, err
+	}
+	log.Println("Se encontró el formularioCompetencia")
+	// Devuelve el formularioCompetencia encontrado.
+	return formularioCompetencia, nil
+}
