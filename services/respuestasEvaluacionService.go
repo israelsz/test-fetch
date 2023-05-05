@@ -1,7 +1,11 @@
 package services
 
 import (
+	"rest-template/config"
 	"rest-template/models"
+	"time"
+
+	"go.mongodb.org/mongo-driver/bson/primitive"
 )
 
 /*
@@ -11,7 +15,6 @@ const (
 	CollectionNameRespuestasEvaluacion = "RespuestasEvaluacion"
 )
 
-/*
 // Función para crear un gato e insertarlo a la base de datos de mongodb
 func CreateRespuestasEvaluacionService(newResponseForm models.ResponseForm) (models.RespuestasEvaluacion, error) {
 	//Se establece conexión con la base de datos mongo
@@ -32,25 +35,10 @@ func CreateRespuestasEvaluacionService(newResponseForm models.ResponseForm) (mod
 	newRespuestasEvaluacion.Periodo = newResponseForm.Periodo
 	newRespuestasEvaluacion.Retroalimentacion = newResponseForm.Retroalimentacion
 	newRespuestasEvaluacion.QuestionsAnswers = newResponseForm.QuestionsAnswers
-	// Establece la fecha de creación y actualización del gato.
+	newRespuestasEvaluacion.Evaluacion = newResponseForm.Formularios
+	// Establece la fecha de creación y actualización.
 	newRespuestasEvaluacion.CreatedAt = time.Now()
 	newRespuestasEvaluacion.UpdatedAt = time.Now()
-	// Se recupera los formularios
-	var formulariosCompetencia []models.FormularioCompetencia
-	var formulario models.FormularioCompetencia
-	log.Println("IDS:", newResponseForm.IdsFormularios)
-	for _, id := range newResponseForm.IdsFormularios {
-		oid, err := primitive.ObjectIDFromHex(id)
-		if err != nil {
-			log.Println("No fue posible convertir el ID")
-			return newRespuestasEvaluacion, errors.New("id invalido")
-		}
-		formulario, _ = GetFormularioCompetenciaByIDService(oid)
-		log.Println("Id:", id, ",FORMULARIOS:", formulario)
-		formulariosCompetencia = append(formulariosCompetencia, formulario)
-	}
-	// Se setean los formularios
-	newRespuestasEvaluacion.Evaluacion = formulariosCompetencia
 
 	// Inserta el gato en la colección.
 	_, err := collection.InsertOne(dbConnection.Context, newRespuestasEvaluacion)
@@ -61,7 +49,6 @@ func CreateRespuestasEvaluacionService(newResponseForm models.ResponseForm) (mod
 
 	return newRespuestasEvaluacion, err
 }
-*/
 
 // Función para crear formulario para enviar al frontend
 func CreateQuestionsAnswersService(cargoID string) (models.ResponseForm, error) {
@@ -114,7 +101,6 @@ func CreateQuestionsAnswersService(cargoID string) (models.ResponseForm, error) 
 		preguntaRepuesta.Competencia = formularioObtenido.Questions[0].Pregunta //Texto Pregunta
 		preguntaRepuesta.Justificacion = "-1"
 		preguntaRepuesta.Puntaje = -1
-		preguntaRepuesta.OpcionesPregunta = formularioObtenido.Questions[0].Respuestas //Opciones que puede tomar la pregunta
 	}
 	formResponse.TipoCompetencia = tipoCompetencias
 	formResponse.Formularios = formulariosCompetencia

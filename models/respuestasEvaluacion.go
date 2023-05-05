@@ -13,15 +13,15 @@ type ResponseForm struct {
 	TipoEvaluacion    string                  `json:"tipoEvaluacion" bson:"tipoEvaluacion,omitempty"`
 	Periodo           string                  `json:"periodo" bson:"periodo,omitempty"`
 	Retroalimentacion int                     `json:"retroalimentacion" bson:"retroalimentacion,omitempty"`
+	QuestionsAnswers  []QuestionsAnswers      `json:"questionsAnswers" bson:"questionsAnswers,omitempty"`
 	Formularios       []FormularioCompetencia `json:"formularios" bson:"formularios,omitempty"`
 	TipoCompetencia   []string                `json:"tipoCompetencia" bson:"tipoCompetencia,omitempty"`
 }
 
 type QuestionsAnswers struct {
-	Competencia      string      `json:"competencia" bson:"competencia,omitempty"`
-	Puntaje          int         `json:"puntaje" bson:"puntaje,omitempty"`
-	Justificacion    string      `json:"justificacion" bson:"justificacion,omitempty"`
-	OpcionesPregunta []Respuesta `json:"opcionesPregunta" bson:"opcionesPregunta,omitempty"`
+	Competencia   string `json:"competencia" bson:"competencia,omitempty"`
+	Puntaje       int    `json:"puntaje" bson:"puntaje,omitempty"`
+	Justificacion string `json:"justificacion" bson:"justificacion,omitempty"`
 }
 
 // Respuesta a un formulario que se guardara en la base de datos

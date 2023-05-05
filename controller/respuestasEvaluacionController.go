@@ -1,13 +1,14 @@
 package controller
 
 import (
+	"log"
 	"net/http"
+	"rest-template/models"
 	"rest-template/services"
 
 	"github.com/gin-gonic/gin"
 )
 
-/*
 // Servicio que permite Crear un respuestasevaluacion
 func CreateRespuestasEvaluacion(ctx *gin.Context) {
 	// Obtiene los datos del respuestasevaluacion a partir del cuerpo de la solicitud HTTP.
@@ -28,7 +29,6 @@ func CreateRespuestasEvaluacion(ctx *gin.Context) {
 	ctx.JSON(http.StatusCreated, createdResponseForm)
 
 }
-*/
 
 // Servicio que permite recuperar un formulario para una competencia especifica
 func GetFormularioEvaluacion(ctx *gin.Context) {
