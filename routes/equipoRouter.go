@@ -16,5 +16,6 @@ func InitEquipoRoutes(r *gin.Engine) {
 		//Solo un usuario logueado sin importar su rol, puede crear un equipo
 		equipoGroup.POST("/", middleware.LoadJWTAuth().MiddlewareFunc(), controller.CreateEquipo)
 		equipoGroup.GET("/evaluador/:evaluadorid", middleware.LoadJWTAuth().MiddlewareFunc(), controller.GetEquiposByEvaluadorID)
+		equipoGroup.GET("/", controller.GetAllEquiposCargos)
 	}
 }

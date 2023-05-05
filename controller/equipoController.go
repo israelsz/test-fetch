@@ -52,3 +52,16 @@ func GetEquiposByEvaluadorID(ctx *gin.Context) {
 	// Devuelve el usuario encontrado.
 	ctx.JSON(http.StatusOK, equipos)
 }
+
+// Servicio para conseguir a todos los equipos de la base de datos
+func GetAllEquiposCargos(ctx *gin.Context) {
+	// Se consiguen a los equipos de la base de datos
+	resultEquipos, err := services.GetAllEquiposCargosService()
+	//Si ocurrio un error
+	if err != nil {
+		ctx.JSON(http.StatusBadRequest, gin.H{"error": "Error al obtener los equipos"})
+		return
+	}
+	//Se envia la respuesta http
+	ctx.JSON(http.StatusCreated, resultEquipos)
+}

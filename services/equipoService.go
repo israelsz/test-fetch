@@ -24,10 +24,10 @@ func CreateEquipoService(newEquipo models.Equipo) (models.Equipo, error) {
 	dbConnection := config.NewDbConnection()
 	// Define un defer para cerrar la conexión a la base de datos al finalizar la función.
 	defer dbConnection.Close()
-	// Obtiene la colección de equipo.
+	// Obtiene la colección de equipos.
 	collection := dbConnection.GetCollection(CollectionNameEquipo)
 
-	// Genera un nuevo ID único para el gato.
+	// Genera un nuevo ID único para el equipo.
 	newEquipo.ID = primitive.NewObjectID()
 	// Establece la fecha de creación y actualización del equipo.
 	newEquipo.CreatedAt = time.Now()
@@ -73,4 +73,40 @@ func GetEquiposAEvaluar(idEvaluador string) ([]models.Equipo, error) {
 		equipo = append(equipo, singleEquipo)
 	}
 	return equipo, nil
+}
+
+func GetAllEquiposCargosService() ([]models.ResponseEquipo, error) {
+	// Crea una nueva instancia a la conexión de base de datos
+	dbConnection := config.NewDbConnection()
+	// Define un defer para cerrar la conexión a la base de datos al finalizar la función.
+	defer dbConnection.Close()
+	collection := dbConnection.GetCollection(CollectionNameEquipo)
+	// Variable que contiene a todos los equipos
+	var responseEquipos []models.ResponseEquipo
+	var singleResponseEquipo models.ResponseEquipo
+	var cargo models.Cargo
+	var singleResponseCargo models.ResponseCargo
+	// Trae a todos los equipos desde la base de datos
+	results, err := collection.Find(dbConnection.Context, bson.M{})
+	if err != nil {
+		return responseEquipos, errors.New("no fue posible traer a todos los equipos")
+	}
+	for results.Next(dbConnection.Context) {
+		var singleEquipo models.Equipo
+		if err = results.Decode(&singleEquipo); err != nil {
+			log.Println("Equipo no se pudo añadir")
+		}
+		singleResponseEquipo.ID = singleEquipo.ID
+		singleResponseEquipo.Name = singleEquipo.Name
+		var responseCargos []models.ResponseCargo
+		for _, id := range singleEquipo.Cargos {
+			cargo, _ = GetCargoByIDService(id.Hex())
+			singleResponseCargo.ID = cargo.ID
+			singleResponseCargo.Name = cargo.Name
+			responseCargos = append(responseCargos, singleResponseCargo)
+		}
+		singleResponseEquipo.Cargos = responseCargos
+		responseEquipos = append(responseEquipos, singleResponseEquipo)
+	}
+	return responseEquipos, nil
 }
