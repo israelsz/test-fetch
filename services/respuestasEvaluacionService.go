@@ -1,13 +1,7 @@
 package services
 
 import (
-	"errors"
-	"log"
-	"rest-template/config"
 	"rest-template/models"
-	"time"
-
-	"go.mongodb.org/mongo-driver/bson/primitive"
 )
 
 /*
@@ -17,6 +11,7 @@ const (
 	CollectionNameRespuestasEvaluacion = "RespuestasEvaluacion"
 )
 
+/*
 // Función para crear un gato e insertarlo a la base de datos de mongodb
 func CreateRespuestasEvaluacionService(newResponseForm models.ResponseForm) (models.RespuestasEvaluacion, error) {
 	//Se establece conexión con la base de datos mongo
@@ -66,6 +61,7 @@ func CreateRespuestasEvaluacionService(newResponseForm models.ResponseForm) (mod
 
 	return newRespuestasEvaluacion, err
 }
+*/
 
 // Función para crear formulario para enviar al frontend
 func CreateQuestionsAnswersService(cargoID string) (models.ResponseForm, error) {
@@ -108,22 +104,19 @@ func CreateQuestionsAnswersService(cargoID string) (models.ResponseForm, error) 
 	}
 	// Variable que contiene a todos los formulariosCompetencia a recolectar
 	var formularioObtenido models.FormularioCompetencia
-	var idsFormularios []string
 	// Crear preguntas - respuestas para enviar (QuestionAnswers)
-	var preguntasRespuestas []models.QuestionsAnswers
 	var preguntaRepuesta models.QuestionsAnswers
+	var formulariosCompetencia []models.FormularioCompetencia
 	// Se consiguen todos los formularios para el id de competencia
 	for _, id := range idsCompetencias {
 		formularioObtenido, _ = GetFormularioCompetenciaByCompetenciaIDService(id)
-		idsFormularios = append(idsFormularios, formularioObtenido.ID.Hex())
+		formulariosCompetencia = append(formulariosCompetencia, formularioObtenido)
 		preguntaRepuesta.Competencia = formularioObtenido.Questions[0].Pregunta //Texto Pregunta
 		preguntaRepuesta.Justificacion = "-1"
 		preguntaRepuesta.Puntaje = -1
 		preguntaRepuesta.OpcionesPregunta = formularioObtenido.Questions[0].Respuestas //Opciones que puede tomar la pregunta
-		preguntasRespuestas = append(preguntasRespuestas, preguntaRepuesta)
 	}
-	formResponse.QuestionsAnswers = preguntasRespuestas
-	formResponse.IdsFormularios = idsFormularios
 	formResponse.TipoCompetencia = tipoCompetencias
+	formResponse.Formularios = formulariosCompetencia
 	return formResponse, nil
 }
