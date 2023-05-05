@@ -120,3 +120,25 @@ func GetCurrentUser(ctx *gin.Context) {
 	}
 	ctx.JSON(http.StatusOK, resultUser)
 }
+
+// Servicio para conseguir un listado de todos los usuarios pertenecientes a un equipo por el id del equipo
+func GetUsersByEquipoId(ctx *gin.Context) {
+	teamID := ctx.Param("teamid")
+	users, err := services.GetUsersByEquipoId(teamID)
+	// Si hubo un error
+	if err != nil {
+		if err == mongo.ErrNoDocuments {
+			// No se encontró ningún documento con el ID especificado.
+			log.Println("Usuarios no encontrado")
+			ctx.JSON(http.StatusNotFound, gin.H{"error": "Usuarios no encontrados"})
+			return
+		}
+		// Ocurrió un error durante la búsqueda.
+		ctx.JSON(http.StatusInternalServerError, gin.H{"error": err.Error()})
+		return
+	}
+	// Si no hay error se retorna a los usuarios
+	log.Println("Se encontraron los usuarios")
+	// Devuelve el usuario encontrado.
+	ctx.JSON(http.StatusOK, users)
+}

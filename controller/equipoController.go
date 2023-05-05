@@ -7,6 +7,7 @@ import (
 	"rest-template/services"
 
 	"github.com/gin-gonic/gin"
+	"go.mongodb.org/mongo-driver/mongo"
 )
 
 // Servicio que permite Crear un equipo
@@ -28,4 +29,26 @@ func CreateEquipo(ctx *gin.Context) {
 	log.Println("Equipo creado en la base de datos")
 	ctx.JSON(http.StatusCreated, createdEquipo)
 
+}
+
+// Servicio para conseguir un listado de todos los equipos a los que un evaluador puede evaluar
+func GetEquiposByEvaluadorID(ctx *gin.Context) {
+	evaluadorID := ctx.Param("evaluadorid")
+	equipos, err := services.GetEquiposAEvaluar(evaluadorID)
+	// Si hubo un error
+	if err != nil {
+		if err == mongo.ErrNoDocuments {
+			// No se encontró ningún documento con el ID especificado.
+			log.Println("Equipos no encontrado")
+			ctx.JSON(http.StatusNotFound, gin.H{"error": "Equipos no encontrados"})
+			return
+		}
+		// Ocurrió un error durante la búsqueda.
+		ctx.JSON(http.StatusInternalServerError, gin.H{"error": err.Error()})
+		return
+	}
+	// Si no hay error se retorna a los usuarios
+	log.Println("Se encontraron los Equipos")
+	// Devuelve el usuario encontrado.
+	ctx.JSON(http.StatusOK, equipos)
 }

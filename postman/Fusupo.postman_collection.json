@@ -1,9 +1,8 @@
 {
 	"info": {
-		"_postman_id": "0e5b651b-d379-412e-a024-d8786dbddd8f",
+		"_postman_id": "765295d5-712b-49ed-b79a-483c37a57fa6",
 		"name": "Fusupo",
-		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-		"_exporter_id": "16889794"
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
 	"item": [
 		{
@@ -200,6 +199,45 @@
 						}
 					},
 					"response": []
+				},
+				{
+					"name": "Usuarios por equipo id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8000/user/team/644af74e0d79185fdf21247e",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"user",
+								"team",
+								"644af74e0d79185fdf21247e"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Usuario actualmente logueado",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8000/user/currentUser",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"user",
+								"currentUser"
+							]
+						}
+					},
+					"response": []
 				}
 			]
 		},
@@ -254,7 +292,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n  \"name\": \"Equipo rocket\",\n  \"idEvaluador\": \"644c88af886f386a73f938fb\",\n  \"cargos\": [\"644c88af886f386a73f938fb\", \"644c88af886f386a73f938fb\"]\n}",
+							"raw": "{\n  \"name\": \"Equipo Administración y Finanzas 2\",\n  \"idEvaluador\": \"64518fc81aa59a8df54b8246\",\n  \"cargos\": [\"6451fe252ab31b2046f81548\", \"6451fe252ab31b2046f8154a\"]\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -285,6 +323,26 @@
 							],
 							"path": [
 								"equipo"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Equipos por evaluador id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8000/equipo/evaluador/64518fc81aa59a8df54b8246",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"equipo",
+								"evaluador",
+								"64518fc81aa59a8df54b8246"
 							]
 						}
 					},
@@ -361,7 +419,7 @@
 		},
 		{
 			"key": "TOKEN",
-			"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2ODM1ODU3NjUsIm9yaWdfaWF0IjoxNjgyOTgwOTY1LCJyb2wiOiJBZG1pbiIsInVzZXIiOnsiX2lkIjoiNjQ1MDNlZTcwNTBiMWRhYzFiZWIxMzNlIiwiZW1haWwiOiJmdXN1cG9AZXhhbXBsZS5jb20iLCJuYW1lIjoiZnVzdXBvIiwicm9sIjoiQWRtaW4iLCJfaGFzaCI6IiIsImNhcmdvIjoiMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwIiwidGVhbSI6IjAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMCIsImNyZWF0ZWRfYXQiOiIwMDAxLTAxLTAxVDAwOjAwOjAwWiIsInVwZGF0ZWRfYXQiOiIwMDAxLTAxLTAxVDAwOjAwOjAwWiJ9fQ.PY74vLqXC0KZtq7Kpn3cH-zGIWWm8qHHij558wnBeUA",
+			"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2ODM4NjY5ODksIm9yaWdfaWF0IjoxNjgzMjYyMTg5LCJyb2wiOiJBZG1pbiIsInVzZXIiOnsiX2lkIjoiNjQ1MThmYzgxYWE1OWE4ZGY1NGI4MjQ2IiwiZW1haWwiOiJmdXN1cG9AZXhhbXBsZS5jb20iLCJuYW1lIjoiZnVzdXBvIiwicm9sIjoiQWRtaW4iLCJfaGFzaCI6IiIsImNhcmdvIjoiMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwIiwidGVhbSI6IjAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMCIsImNyZWF0ZWRfYXQiOiIwMDAxLTAxLTAxVDAwOjAwOjAwWiIsInVwZGF0ZWRfYXQiOiIwMDAxLTAxLTAxVDAwOjAwOjAwWiJ9fQ.3w9w92CHpqxGCgecWGnzeD0KA13A6h5o45IanqDwKTs",
 			"type": "string"
 		}
 	]

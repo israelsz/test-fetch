@@ -22,5 +22,6 @@ func InitUserRoutes(r *gin.Engine) {
 		// Solo Admins logueados pueden borrar usuarios
 		userGroup.DELETE("/:id", middleware.SetRoles(middleware.RolAdmin), middleware.LoadJWTAuth().MiddlewareFunc(), controller.DeleteUser)
 		userGroup.GET("/currentUser", middleware.LoadJWTAuth().MiddlewareFunc(), controller.GetCurrentUser)
+		userGroup.GET("/team/:teamid", middleware.LoadJWTAuth().MiddlewareFunc(), controller.GetUsersByEquipoId)
 	}
 }
