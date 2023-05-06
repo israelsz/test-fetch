@@ -1,0 +1,41 @@
+Correo,Password,Nombre,Rol,Cargo,Equipo
+A@example.cl,abc123,A,Admin,Director(a) Ejecutivo(a),Equipo Dirección Ejecutiva
+B@example.cl,abc123,B,User,Subdirector(a) Ejecutivo(a),Equipo Dirección Ejecutiva
+C@example.cl,abc123,C,User,Director(a) Propuesta País,Equipo Directores(as) de Áreas y Regionales
+D@example.cl,abc123,D,User,Director(a) Regional,Equipo Directores(as) de Áreas y Regionales
+E@example.cl,abc123,E,User,Director(a) Comunicación Estratégica,Equipo Directores(as) de Áreas y Regionales
+F@example.cl,abc123,F,User,Director(a) Administración y Finanzas,Equipo Directores(as) de Áreas y Regionales
+G@example.cl,abc123,G,User,Director(a) Selección y Desarrollo de RRHH,Equipo Directores(as) de Áreas y Regionales
+H@example.cl,abc123,H,User,Director(a) Servicio País,Equipo Directores(as) de Áreas y Regionales
+I@example.cl,abc123,I,User,Director(a) Cooperación y Nuevos Proyectos,Equipo Directores(as) de Áreas y Regionales
+J@example.cl,abc123,J,User,Community Manager y Producción,Equipo Comunicación Estratégica
+K@example.cl,abc123,K,User,Coordinador(a) Nacional Programa Tesis País,Equipo Propuesta País
+L@example.cl,abc123,L,User,Coordinador(a) Nacional Programa Seminario Propuesta País,Equipo Propuesta País
+M@example.cl,abc123,M,User,Encargado(a) Estudios Territorio Biocultural,Equipo Propuesta País
+N@example.cl,abc123,N,User,Subdirector(a) Propuesta País,Equipo Propuesta País
+Ñ@example.cl,abc123,Ñ,User,Asesor(a) Territorial,Equipo Regional
+O@example.cl,abc123,O,User,Asistente Administrativo Regional,Equipo Regional
+P@example.cl,abc123,P,User,Auxiliar de Aseo Regional,Equipo Regional
+Q@example.cl,abc123,Q,User,Coordinador(a) Regional de Jóvenes,Equipo Regional
+R@example.cl,abc123,R,User,Coordinador(a) Territorial,Equipo Regional
+S@example.cl,abc123,S,User,Analista de Datos,Equipo Dirección Nacional Servicio País
+T@example.cl,abc123,T,User,Analista en Control de Gestión,Equipo Dirección Nacional Servicio País
+U@example.cl,abc123,U,User,Coordinador(a) Área de Gestión Programática y Evaluación,Equipo Dirección Nacional Servicio País
+V@example.cl,abc123,V,User,Coordinador(a) Nacional de Jóvenes,Equipo Dirección Nacional Servicio País
+W@example.cl,abc123,W,User,Coordinador(a) Unidad Técnica Nacional,Equipo Dirección Nacional Servicio País
+X@example.cl,abc123,X,User,Encargado(a) de Monitoreo y Control de Gestión,Equipo Dirección Nacional Servicio País
+Y@example.cl,abc123,Y,User,Encargado(a) de Voluntarios y Prácticas,Equipo Dirección Nacional Servicio País
+Z@example.cl,abc123,Z,User,Profesional de Evaluación,Equipo Dirección Nacional Servicio País
+AA@example.cl,abc123,AA,User,Profesional de Gestión Técnica Territorial,Equipo Dirección Nacional Servicio País
+AB@example.cl,abc123,AB,User,Secretario(a) Administrativo(a) Dirección Nacional,Equipo Dirección Nacional Servicio País
+AC@example.cl,abc123,AC,User,Apoyo Administrativo y Trámites,Equipo de Administración y Finanzas
+AD@example.cl,abc123,AD,User,Auxiliar de Administración,Equipo de Administración y Finanzas
+AE@example.cl,abc123,AE,User,Auxiliar de Aseo,Equipo de Administración y Finanzas
+AF@example.cl,abc123,AF,User,Conserje,Equipo de Administración y Finanzas
+AG@example.cl,abc123,AG,User,Coordinador(a) de Administración y Servicios Generales,Equipo de Administración y Finanzas
+AH@example.cl,abc123,AH,User,Coordinador(a) de Personal y Remuneraciones,Equipo de Administración y Finanzas
+AI@example.cl,abc123,AI,User,Encargado(a) de Soporte Informático,Equipo de Administración y Finanzas
+AJ@example.cl,abc123,AJ,User,Gestor(a) Financiero Contable,Equipo de Administración y Finanzas
+AK@example.cl,abc123,AK,User,Profesional de Personal y Remuneraciones,Equipo de Administración y Finanzas
+AL@example.cl,abc123,AL,User,Recepcionista y Encargado(a) de Servicios Generales,Equipo de Administración y Finanzas
+AM@example.cl,abc123,AM,User,Encargado(a) Selección y Evaluación,Equipo Selección y Desarrollo de RRHH
