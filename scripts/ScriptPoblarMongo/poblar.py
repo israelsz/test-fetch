@@ -6,67 +6,15 @@ import datetime
 
 # Conexión a la base de datos MongoDB
 client = MongoClient('mongodb://localhost:27017/')
-client.drop_database('Fusupo')
-
-db = client["Fusupo"]
+db = client["fusupo"]
 
 # seleccionar colección
 competencia = db['Competencia']
 formularioCompetencia = db['FormularioCompetencia']
 cargo = db['Cargo']
 equipo = db['Equipo']
-usuario = db['Usuario']
-'''
-# Función para insertar una competencia
-def insertar_competencia(nombre, descripcion, tipo):
-    competencia = {
-        "name": nombre,
-        "descripcion": descripcion,
-        "tipo": tipo,
-        "createdAt": datetime.datetime.utcnow(),
-        "updatedAt": datetime.datetime.utcnow()
-    }
-    result = db.competencias.insert_one(competencia)
-    return result.inserted_id
+usuario = db['User']
 
-# Función para insertar un cargo
-def insertar_cargo(nombre, competencias):
-    competencias_ids = [ObjectId(c) for c in competencias]
-    cargo = {
-        "name": nombre,
-        "competencias": competencias_ids,
-        "createdAt": datetime.datetime.utcnow(),
-        "updatedAt": datetime.datetime.utcnow()
-    }
-    result = db.cargos.insert_one(cargo)
-    return result.inserted_id
-
-# Función para insertar un equipo
-def insertar_equipo(nombre, id_evaluador, cargos):
-    cargos_ids = [ObjectId(c) for c in cargos]
-    equipo = {
-        "name": nombre,
-        "idEvaluador": ObjectId(id_evaluador),
-        "cargos": cargos_ids,
-        "createdAt": datetime.datetime.utcnow(),
-        "updatedAt": datetime.datetime.utcnow()
-    }
-    result = db.equipos.insert_one(equipo)
-    return result.inserted_id
-
-# Función para insertar un formulario de competencia
-def insertar_formulario_competencia(tipo, id_competencia, preguntas):
-    preguntas_bson = [{"pregunta": p} for p in preguntas]
-    formulario_competencia = {
-        "tipo": tipo,
-        "createdAt": datetime.datetime.utcnow(),
-        "updatedAt": datetime.datetime.utcnow(),
-        "idCompetencia": ObjectId(id_competencia),
-        "questions": preguntas_bson
-    }
-    result = db.formularios_competencias.insert_one(formulario_competencia)
-    return result
-'''
 def populate_competencia(nombre):
     n=0
     with open(nombre, newline='') as csvfile:
@@ -180,7 +128,7 @@ def populate_usuario(nombre,nombre2,equipos_d):
                 'email':row[0],
                 'name': row[2],
                 'rol': row[3],
-                'password': row[1],
+                '_hash': "$2a$04$T55kijSGKWLGVTSc47Wvc.wNmfiVGcHkCyGaLlBzoNVs7UVSAlB7i",
                 'cargo':u_cargo_id,
                 'team':u_equipo_id
             }
@@ -204,17 +152,3 @@ populate_competencia('BD_Fusupo-Competencia.csv')
 populate_cargo('BD_Fusupo-Cargo-Competencia.csv')
 equipo_d1 = populate_equipo('BD_Fusupo-Equipo.csv')
 populate_usuario('BD_Fusupo-Usuario.csv','BD_Fusupo-Equipo-Evaluador.csv',equipo_d1)
-
-'''
-equipo.insert_one({
-    "name": "Equipo2",
-    "idEvaluador": "345345",
-    "cargos": ["6451fe252ab31b2046f81548", "6451fe252ab31b2046f8154a"]
-})
-filter = { 'name': 'Equipo1' }
-newvalues = {"$set":{"idEvaluador":"3333331455132452345"}}
-equipo.update_one(filter,newvalues)
-'''
-#file_equipo_eval = open('BD_Fusupo-Equipo-Evaluador.csv')
-#file_usuario = open('BD_Fusupo-Usuario.csv')
-
