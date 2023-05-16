@@ -17,7 +17,7 @@ usuario = db['User']
 
 def populate_competencia(nombre):
     n=0
-    with open(nombre, newline='') as csvfile:
+    with open(nombre, newline='',encoding="utf8") as csvfile:
         
         reader = csv.reader(csvfile, delimiter=',', quotechar='"')
         next(reader, None)  # saltar la fila de encabezado
@@ -73,7 +73,7 @@ def populate_competencia(nombre):
             formularioCompetencia.insert_one(formulario)
 
 def populate_cargo(nombre):
-    with open(nombre, newline='') as csvfile:
+    with open(nombre, newline='',encoding="utf8") as csvfile:
         reader = csv.reader(csvfile, delimiter=',', quotechar='"')
         next(reader, None)  # saltar la fila de encabezado
         
@@ -97,7 +97,7 @@ def populate_cargo(nombre):
 
 def populate_equipo(nombre):
     equipos_d = {}
-    with open(nombre, newline='') as csvfile:
+    with open(nombre, newline='',encoding="utf8") as csvfile:
         reader = csv.reader(csvfile, delimiter=',', quotechar='"')
         next(reader, None)  # saltar la fila de encabezado
         
@@ -113,7 +113,7 @@ def populate_equipo(nombre):
     return equipos_d
 
 def populate_usuario(nombre,nombre2,equipos_d):
-    with open(nombre, newline='') as csvfile:
+    with open(nombre, newline='', encoding="utf8") as csvfile:
         reader = csv.reader(csvfile, delimiter=',', quotechar='"')
         next(reader, None)  # saltar la fila de encabezado
         
@@ -130,7 +130,10 @@ def populate_usuario(nombre,nombre2,equipos_d):
                 'rol': row[3],
                 '_hash': "$2a$04$T55kijSGKWLGVTSc47Wvc.wNmfiVGcHkCyGaLlBzoNVs7UVSAlB7i",
                 'cargo':u_cargo_id,
-                'team':u_equipo_id
+                'team':u_equipo_id,
+                'estadoEval': False,
+                'estadoAuto': False,
+                'estadoRetro': False
             }
             
             usuario.insert_one(dato)
