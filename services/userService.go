@@ -139,6 +139,10 @@ func CreateUserService(newUser models.User) (models.User, error) {
 			newUser.Hash = utils.GeneratePassword(newUser.Password)
 			// Se vacia el campo password
 			newUser.Password = ""
+			// Se inicializan los campos de evaluacion
+			newUser.EstadoEval = false
+			newUser.EstadoAuto = false
+			newUser.EstadoRetro = false
 			// No se encontró ningún documento con el email especificado, entonces se inserta el nuevo usuario
 			_, err = collection.InsertOne(dbConnection.Context, newUser)
 			if err != nil {
@@ -304,33 +308,48 @@ func DeleteUserService(userID string) error {
 }
 
 // Función que permite conseguir un listado de todos los usuarios pertenecientes a un equipo por el id de este
-func GetUsersByEquipoId(idEquipo string) ([]models.User, error) {
+func GetUsersByEquipoId(idEquipo string) ([]models.UserResponse, error) {
 	// Crea una nueva instancia a la conexión de base de datos
 	dbConnection := config.NewDbConnection()
 	// Define un defer para cerrar la conexión a la base de datos al finalizar la función.
 	defer dbConnection.Close()
 	collection := dbConnection.GetCollection(CollectionNameUser)
 	// Variable que contiene a todos los usuarios
-	var usuarios []models.User
+	var users []models.UserResponse
 	// Se convierte el id a ObjectID
 	oEquipoId, err := primitive.ObjectIDFromHex(idEquipo)
 	if err != nil {
-		return usuarios, errors.New("no fue posible convertir el ID")
+		return users, errors.New("no fue posible convertir el ID")
 	}
 	// Crea un filtro para buscar los equipos por id de equipo
 	filter := bson.M{"team": oEquipoId}
 	// Trae a todos los usuarios desde la base de datos para el id de equipo entregado
 	results, err := collection.Find(dbConnection.Context, filter)
 	if err != nil {
-		return usuarios, errors.New("no fue posible traer a todos los usuarios por el id de equipo ingresado")
+		return users, errors.New("no fue posible traer a todos los usuarios por el id de equipo ingresado")
 	}
+	encontroUsuarios := true
 	for results.Next(dbConnection.Context) {
+		encontroUsuarios = false
 		var singleUser models.User
+		var singleUserReponse models.UserResponse
 		if err = results.Decode(&singleUser); err != nil {
 			log.Println("User no se pudo añadir")
 		}
-
-		usuarios = append(usuarios, singleUser)
+		// Se obtiene el cargo del usuario
+		singleCargo, _ := GetCargoByIDService(singleUser.Cargo.Hex())
+		// Se agrega el usuario a la response
+		singleUserReponse.ID = singleUser.ID
+		singleUserReponse.Name = singleUser.Name
+		singleUserReponse.EstadoAuto = singleUser.EstadoAuto
+		singleUserReponse.EstadoEval = singleUser.EstadoEval
+		singleUserReponse.EstadoRetro = singleUser.EstadoRetro
+		singleUserReponse.Cargo = singleUser.Cargo
+		singleUserReponse.NameCargo = singleCargo.Name
+		users = append(users, singleUserReponse)
 	}
-	return usuarios, nil
+	if encontroUsuarios {
+		return users, errors.New("no existe team")
+	}
+	return users, nil
 }
