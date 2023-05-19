@@ -6,7 +6,7 @@ import datetime
 
 # Conexión a la base de datos MongoDB
 client = MongoClient('mongodb://localhost:27017/')
-db = client["fusupo"]
+db = client["FUSUPO"]
 
 # seleccionar colección
 competencia = db['Competencia']
@@ -131,9 +131,9 @@ def populate_usuario(nombre,nombre2,equipos_d):
                 '_hash': "$2a$04$T55kijSGKWLGVTSc47Wvc.wNmfiVGcHkCyGaLlBzoNVs7UVSAlB7i",
                 'cargo':u_cargo_id,
                 'team':u_equipo_id,
-                'estadoEval': False,
-                'estadoAuto': False,
-                'estadoRetro': False
+                'estado_eval': False,
+                'estado_auto': False,
+                'estado_retro': False
             }
             
             usuario.insert_one(dato)
