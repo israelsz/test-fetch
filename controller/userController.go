@@ -3,6 +3,7 @@ package controller
 import (
 	"log"
 	"net/http"
+	"rest-template/middleware"
 	"rest-template/models"
 	"rest-template/services"
 
@@ -46,7 +47,7 @@ func GetUserByID(ctx *gin.Context) {
 	ctx.JSON(http.StatusCreated, resultUser)
 }
 
-// Función para obtener un usuario por id
+// Función para obtener un usuario por email
 func GetUserByEmail(ctx *gin.Context) {
 	userEmail := ctx.Param("email")
 	resultUser, err := services.GetUserByEmailService(userEmail)
@@ -106,4 +107,38 @@ func DeleteUser(ctx *gin.Context) {
 	log.Println("Se elimino el usuario")
 	// Devuelve el usuario encontrado.
 	ctx.JSON(http.StatusOK, "Usuario eliminado")
+}
+
+// Función para conseguir la información del usuario que se encuentra loggeado actualmente
+func GetCurrentUser(ctx *gin.Context) {
+	currentUser := middleware.IdentityHandlerFunc(ctx).(map[string]interface{})
+	userID := currentUser["_id"].(string)
+	resultUser, err := services.GetUserByIDService(userID)
+	if err != nil {
+		ctx.JSON(http.StatusBadRequest, gin.H{"error": "Error al obtener el usuario"})
+		return
+	}
+	ctx.JSON(http.StatusOK, resultUser)
+}
+
+// Servicio para conseguir un listado de todos los usuarios pertenecientes a un equipo por el id del equipo
+func GetUsersByEquipoId(ctx *gin.Context) {
+	teamID := ctx.Param("teamid")
+	users, err := services.GetUsersByEquipoId(teamID)
+	// Si hubo un error
+	if err != nil {
+		if err == mongo.ErrNoDocuments {
+			// No se encontró ningún documento con el ID especificado.
+			log.Println("Usuarios no encontrado")
+			ctx.JSON(http.StatusNotFound, gin.H{"error": "Usuarios no encontrados"})
+			return
+		}
+		// Ocurrió un error durante la búsqueda.
+		ctx.JSON(http.StatusInternalServerError, gin.H{"error": err.Error()})
+		return
+	}
+	// Si no hay error se retorna a los usuarios
+	log.Println("Se encontraron los usuarios")
+	// Devuelve el usuario encontrado.
+	ctx.JSON(http.StatusOK, users)
 }

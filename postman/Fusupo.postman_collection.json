@@ -1,0 +1,426 @@
+{
+	"info": {
+		"_postman_id": "765295d5-712b-49ed-b79a-483c37a57fa6",
+		"name": "Fusupo",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "cargo",
+			"item": [
+				{
+					"name": "create",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"cargo 1\",\n    \"competencias\": [\"644af7f40d79185fdf212482\", \"644af7f40d79185fdf212489\"]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{ADDRESS}}/cargo",
+							"host": [
+								"{{ADDRESS}}"
+							],
+							"path": [
+								"cargo"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "competencia",
+			"item": [
+				{
+					"name": "create",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Oportunidades de Mejora\",\n    \"descripcion\": \"Indique sugerencias para administrar las oportunidades de mejora del trabajador(a)\",\n    \"tipo\": 3\n}"
+						},
+						"url": {
+							"raw": "{{ADDRESS}}/competencia",
+							"host": [
+								"{{ADDRESS}}"
+							],
+							"path": [
+								"competencia"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "FormularioCompetencia",
+			"item": [
+				{
+					"name": "create",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"idCompetencia\": \"64530f07488545281b836e46\",\n    \"questions\": [\n        {\n            \"tipo\": \"texto\", \n            \"pregunta\": \"Oportunidades de Mejora: Indique sugerencias para administrar las oportunidades de mejora del trabajador(a).\",\n            \"respuestas\": [\n                {\n                    \"puntaje\": 1,\n                    \"descripcion\": \"1\"\n                }\n            ]\n        }\n    ]   \n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{ADDRESS}}/formulariocompetencia/",
+							"host": [
+								"{{ADDRESS}}"
+							],
+							"path": [
+								"formulariocompetencia",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "formularia competencias",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{ADDRESS}}/respuestasevaluacion/6451b4651e06ab562df26737",
+							"host": [
+								"{{ADDRESS}}"
+							],
+							"path": [
+								"respuestasevaluacion",
+								"6451b4651e06ab562df26737"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "user",
+			"item": [
+				{
+					"name": "register",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"email\": \"fusupo@example.com\",\n  \"name\": \"fusupo\",\n  \"rol\": \"Admin\",\n  \"password\": \"Hola123\",\n  \"cargo\": \"644af74e0d79185fdf21247e\",\n  \"team\": \"644af74e0d79185fdf21247e\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{ADDRESS}}/user",
+							"host": [
+								"{{ADDRESS}}"
+							],
+							"path": [
+								"user"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "login",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"email\": \"fusupo@example.com\",\n  \"password\": \"Hola123\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{ADDRESS}}/auth/login",
+							"host": [
+								"{{ADDRESS}}"
+							],
+							"path": [
+								"auth",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Usuarios por equipo id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8000/user/team/644af74e0d79185fdf21247e",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"user",
+								"team",
+								"644af74e0d79185fdf21247e"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Usuario actualmente logueado",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8000/user/currentUser",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"user",
+								"currentUser"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "respuestasEvaluacion",
+			"item": [
+				{
+					"name": "create",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"idEvaluado\": \"\",\n    \"idEvaluador\": \"\",\n    \"tipoEvaluacion\": \"\",\n    \"periodo\": \"\",\n    \"retroalimentacion\": 1,\n    \"questionsAnswers\": [\n        {\n            \"competencia\": \"IMPACTO E INFLUENCIA: Moviliza y convence a otros/as, por medio de argumentos sólidos y/o inspiradores, en adherir a iniciativas que permitan el alcance de las metas institucionales, logrando concretar ideas o mejoras a través de  la cooperación y confianza que desarrolla.\",\n            \"puntaje\": -1,\n            \"justificacion\": \"-1\",\n            \"opcionesPregunta\": [\n                {\n                    \"puntaje\": 1,\n                    \"descripcion\": \"1\"\n                },\n                {\n                    \"puntaje\": 2,\n                    \"descripcion\": \"2\"\n                },\n                {\n                    \"puntaje\": 3,\n                    \"descripcion\": \"3\"\n                },\n                {\n                    \"puntaje\": 4,\n                    \"descripcion\": \"4\"\n                }\n            ]\n        },\n        {\n            \"competencia\": \"LIDERAZGO: Dirige al grupo de forma motivadora, promoviendo la participación, el respeto y la cordialidad, en función de conseguir los resultados esperados.\",\n            \"puntaje\": -1,\n            \"justificacion\": \"-1\",\n            \"opcionesPregunta\": [\n                {\n                    \"puntaje\": 1,\n                    \"descripcion\": \"1\"\n                },\n                {\n                    \"puntaje\": 2,\n                    \"descripcion\": \"2\"\n                },\n                {\n                    \"puntaje\": 3,\n                    \"descripcion\": \"3\"\n                },\n                {\n                    \"puntaje\": 4,\n                    \"descripcion\": \"4\"\n                }\n            ]\n        },\n        {\n            \"competencia\": \"ASESORÍA: Transmite conocimientos técnicos y experiencias, haciéndolos comprensibles y ejecutables para los demás. Implica apoyar la toma de decisiones, siendo un referente técnico en aquellas materias de su competencia.\",\n            \"puntaje\": -1,\n            \"justificacion\": \"-1\",\n            \"opcionesPregunta\": [\n                {\n                    \"puntaje\": 1,\n                    \"descripcion\": \"1\"\n                },\n                {\n                    \"puntaje\": 2,\n                    \"descripcion\": \"2\"\n                },\n                {\n                    \"puntaje\": 3,\n                    \"descripcion\": \"3\"\n                },\n                {\n                    \"puntaje\": 4,\n                    \"descripcion\": \"4\"\n                }\n            ]\n        },\n        {\n            \"competencia\": \"TRABAJO EN EQUIPO: Fomenta relaciones de colaboración y un clima armónico de trabajo en el cumplimiento de un objetivo común, integrando sus cualidades, intereses y opiniones con las de los demás.\",\n            \"puntaje\": -1,\n            \"justificacion\": \"-1\",\n            \"opcionesPregunta\": [\n                {\n                    \"puntaje\": 1,\n                    \"descripcion\": \"1\"\n                },\n                {\n                    \"puntaje\": 2,\n                    \"descripcion\": \"2\"\n                },\n                {\n                    \"puntaje\": 3,\n                    \"descripcion\": \"3\"\n                },\n                {\n                    \"puntaje\": 4,\n                    \"descripcion\": \"4\"\n                }\n            ]\n        },\n        {\n            \"competencia\": \"COMUNICACIÓN EFECTIVA: Se comunica promoviendo el diálogo, transmitiendo sus ideas con claridad y precisión, en forma verbal y escrita, verificando la comprensión de sus mensajes y utilizando un lenguaje que se ajuste a sus interlocutores/as.\",\n            \"puntaje\": -1,\n            \"justificacion\": \"-1\",\n            \"opcionesPregunta\": [\n                {\n                    \"puntaje\": 1,\n                    \"descripcion\": \"1\"\n                },\n                {\n                    \"puntaje\": 2,\n                    \"descripcion\": \"2\"\n                },\n                {\n                    \"puntaje\": 3,\n                    \"descripcion\": \"3\"\n                },\n                {\n                    \"puntaje\": 4,\n                    \"descripcion\": \"4\"\n                }\n            ]\n        },\n        {\n            \"competencia\": \"COMPROMISO ORGANIZACIONAL: Se identifica con la misión institucional y muestra disposición y proactividad para realizar acciones en favor de su concreción.\",\n            \"puntaje\": -1,\n            \"justificacion\": \"-1\",\n            \"opcionesPregunta\": [\n                {\n                    \"puntaje\": 1,\n                    \"descripcion\": \"1\"\n                },\n                {\n                    \"puntaje\": 2,\n                    \"descripcion\": \"2\"\n                },\n                {\n                    \"puntaje\": 3,\n                    \"descripcion\": \"3\"\n                },\n                {\n                    \"puntaje\": 4,\n                    \"descripcion\": \"4\"\n                }\n            ]\n        },\n        {\n            \"competencia\": \"Oportunidades de Mejora: Indique sugerencias para administrar las oportunidades de mejora del trabajador(a).\",\n            \"puntaje\": -1,\n            \"justificacion\": \"-1\",\n            \"opcionesPregunta\": [\n                {\n                    \"puntaje\": 1,\n                    \"descripcion\": \"1\"\n                }\n            ]\n        }\n    ],\n    \"idsFormularios\": [\n        \"6451d8e9856a8ee20e6acbf2\",\n        \"6451d8f4856a8ee20e6acbf4\",\n        \"6451d900856a8ee20e6acbf6\",\n        \"6451d932856a8ee20e6acbfe\",\n        \"6451d93e856a8ee20e6acc00\",\n        \"6451d94a856a8ee20e6acc02\",\n        \"6453147064c689ca6cf01a60\"\n    ]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{ADDRESS}}/respuestasevaluacion",
+							"host": [
+								"{{ADDRESS}}"
+							],
+							"path": [
+								"respuestasevaluacion"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Equipo",
+			"item": [
+				{
+					"name": "create",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"name\": \"Equipo Administración y Finanzas 2\",\n  \"idEvaluador\": \"64518fc81aa59a8df54b8246\",\n  \"cargos\": [\"6451fe252ab31b2046f81548\", \"6451fe252ab31b2046f8154a\"]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{ADDRESS}}/equipo",
+							"host": [
+								"{{ADDRESS}}"
+							],
+							"path": [
+								"equipo"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "equipo propuesta pais",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{ADDRESS}}/equipo",
+							"host": [
+								"{{ADDRESS}}"
+							],
+							"path": [
+								"equipo"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Equipos por evaluador id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8000/equipo/evaluador/64518fc81aa59a8df54b8246",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"equipo",
+								"evaluador",
+								"64518fc81aa59a8df54b8246"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"auth": {
+				"type": "bearer",
+				"bearer": [
+					{
+						"key": "token",
+						"value": "{{TOKEN}}",
+						"type": "string"
+					}
+				]
+			},
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			]
+		}
+	],
+	"auth": {
+		"type": "bearer",
+		"bearer": [
+			{
+				"key": "token",
+				"value": "{{TOKEN}}",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "ADDRESS",
+			"value": "http://localhost:8000",
+			"type": "string"
+		},
+		{
+			"key": "TOKEN",
+			"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2ODM4NjY5ODksIm9yaWdfaWF0IjoxNjgzMjYyMTg5LCJyb2wiOiJBZG1pbiIsInVzZXIiOnsiX2lkIjoiNjQ1MThmYzgxYWE1OWE4ZGY1NGI4MjQ2IiwiZW1haWwiOiJmdXN1cG9AZXhhbXBsZS5jb20iLCJuYW1lIjoiZnVzdXBvIiwicm9sIjoiQWRtaW4iLCJfaGFzaCI6IiIsImNhcmdvIjoiMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwIiwidGVhbSI6IjAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMCIsImNyZWF0ZWRfYXQiOiIwMDAxLTAxLTAxVDAwOjAwOjAwWiIsInVwZGF0ZWRfYXQiOiIwMDAxLTAxLTAxVDAwOjAwOjAwWiJ9fQ.3w9w92CHpqxGCgecWGnzeD0KA13A6h5o45IanqDwKTs",
+			"type": "string"
+		}
+	]
+}

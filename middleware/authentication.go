@@ -153,14 +153,16 @@ func LoadJWTAuth() *jwt.GinJWTMiddleware {
 		// TimeFunc provides the current time. You can override it to use another time value. This is useful for testing or if your server uses a different time zone than your tokens.
 		TimeFunc: time.Now,
 
+		//Usar Tokens exclusivamente como autorización
+		TokenLookup: "header: Authorization",
 		// Guardar token JWT como cookie en el navegador
-		SendCookie:     true,
-		SecureCookie:   false, //non HTTPS dev environments
-		CookieHTTPOnly: true,  // JS can't modify
+		//SendCookie:     true,
+		//SecureCookie:   false, //non HTTPS dev environments
+		//CookieHTTPOnly: true,  // JS can't modify
 		//CookieDomain:   "localhost:8080", Se debe ingresar la URL del host
-		CookieName:     "token", // default jwt
-		TokenLookup:    "cookie:token",
-		CookieSameSite: http.SameSiteDefaultMode, //SameSiteDefaultMode, SameSiteLaxMode, SameSiteStrictMode, SameSiteNoneMode
+		//CookieName:     "token", // default jwt
+		//TokenLookup:    "cookie:token",
+		//CookieSameSite: http.SameSiteDefaultMode, //SameSiteDefaultMode, SameSiteLaxMode, SameSiteStrictMode, SameSiteNoneMode
 	})
 
 	// Verificar si existen errores

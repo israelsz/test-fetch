@@ -19,8 +19,9 @@ RUN apk update && apk --no-cache add ca-certificates
 
 WORKDIR /root/
 
-# Copy the folder with the binary file from the previous stage
-COPY --from=0 /go/src/fusupo-backend/ .
+# Copy the folder with the binary files from the previous stage
+COPY --from=0 /go/src/fusupo-backend/.env .
+COPY --from=0 /go/src/fusupo-backend/pingeso-fusupo-backend-v2 .
 
 # Port to be exposed
 EXPOSE 8000

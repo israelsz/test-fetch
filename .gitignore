@@ -2,3 +2,4 @@
 .env
 # Ignorar carpeta con logs
 logs/
+.devcontainer/
